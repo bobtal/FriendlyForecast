@@ -11,8 +11,10 @@ import android.widget.TextView;
 
 import com.teamtreehouse.friendlyforecast.R;
 import com.teamtreehouse.friendlyforecast.db.ForecastDataSource;
+import com.teamtreehouse.friendlyforecast.db.ForecastHelper;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.util.ArrayList;
 
 
@@ -37,8 +39,8 @@ public class ViewForecastActivity extends ListActivity {
         super.onResume();
         dataSource.open();
 
-        // TODO: Select all
-        //updateList(cursor);
+        Cursor cursor = dataSource.selectAllTemperatures();
+        updateList(cursor);
     }
 
     @Override
@@ -51,6 +53,15 @@ public class ViewForecastActivity extends ListActivity {
         mTemperatures.clear();
 
         // TODO: Loop through cursor to populate mTemperatures
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            // do stuff
+            int i = cursor.getColumnIndex(ForecastHelper.COLUMN_TEMPERATURE);
+            double temperature = cursor.getDouble(i);
+            mTemperatures.add(new BigDecimal(temperature, MathContext.DECIMAL32));
+
+            cursor.moveToNext();
+        }
 
         ArrayAdapter<BigDecimal> adapter = new ArrayAdapter<BigDecimal>(ViewForecastActivity.this,
                 android.R.layout.simple_list_item_1,
