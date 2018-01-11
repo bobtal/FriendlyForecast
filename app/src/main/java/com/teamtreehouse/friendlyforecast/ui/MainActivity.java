@@ -118,9 +118,9 @@ public class MainActivity extends Activity {
                 Log.v(TAG, "Temp " + i + ": " + mTemperatures[i]);
             }
 
-            // TODO: Insert
-            //updateHighAndLow();
-            //enableOtherButtons();
+            dataSource.insertForecast(forecast);
+            updateHighAndLow();
+            enableOtherButtons();
         }
 
         @Override
