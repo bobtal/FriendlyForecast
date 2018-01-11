@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.teamtreehouse.friendlyforecast.R;
+import com.teamtreehouse.friendlyforecast.db.ForecastDataSource;
 import com.teamtreehouse.friendlyforecast.services.Forecast;
 import com.teamtreehouse.friendlyforecast.services.ForecastService;
 
@@ -22,6 +23,8 @@ import retrofit.client.Response;
 public class MainActivity extends Activity {
 
     public static final String TAG = MainActivity.class.getSimpleName();
+
+    protected ForecastDataSource dataSource;
 
     protected Button mInsertButton;
     protected Button mSelectButton;
@@ -42,7 +45,7 @@ public class MainActivity extends Activity {
 
         getActionBar().hide();
 
-        // TODO: Instantiate mDataSource
+        dataSource = new ForecastDataSource(this);
 
         mHighTextView = (TextView)findViewById(R.id.textView2);
         mLowTextView = (TextView)findViewById(R.id.textView3);
