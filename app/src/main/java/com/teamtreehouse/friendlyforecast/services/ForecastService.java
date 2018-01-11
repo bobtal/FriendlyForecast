@@ -9,7 +9,7 @@ import retrofit.http.Path;
 
 public class ForecastService {
 
-    private static final String API_URL = "https://api.darksky.net/forecast";
+    private static final String API_URL = "https://api.darksky.net";
 
     /*
      * Define a service for getting forecast information using Retrofit by Square
