@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.teamtreehouse.friendlyforecast.R;
+import com.teamtreehouse.friendlyforecast.db.ForecastDataSource;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 
 public class ViewForecastActivity extends ListActivity {
 
-    // TODO: Declare mDataSource
+    protected ForecastDataSource dataSource;
     protected ArrayList<BigDecimal> mTemperatures;
 
     @Override
@@ -27,14 +28,14 @@ public class ViewForecastActivity extends ListActivity {
 
         configureActionBar();
 
-        // TODO: Instantiate mDataSource
+        dataSource = new ForecastDataSource(ViewForecastActivity.this);
         mTemperatures = new ArrayList<BigDecimal>();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        // TODO: Open db
+        dataSource.open();
 
         // TODO: Select all
         //updateList(cursor);
@@ -43,7 +44,7 @@ public class ViewForecastActivity extends ListActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        // TODO: Close db
+        dataSource.close();
     }
 
     protected void updateList(Cursor cursor) {

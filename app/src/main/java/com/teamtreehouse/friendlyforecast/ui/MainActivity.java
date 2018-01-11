@@ -45,7 +45,7 @@ public class MainActivity extends Activity {
 
         getActionBar().hide();
 
-        dataSource = new ForecastDataSource(this);
+        dataSource = new ForecastDataSource(MainActivity.this);
 
         mHighTextView = (TextView)findViewById(R.id.textView2);
         mLowTextView = (TextView)findViewById(R.id.textView3);
