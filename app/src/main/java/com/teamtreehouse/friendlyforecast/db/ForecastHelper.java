@@ -1,4 +1,4 @@
-package com.teamtreehouse.friendlyforecast.services;
+package com.teamtreehouse.friendlyforecast.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
