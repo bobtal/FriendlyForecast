@@ -95,13 +95,13 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        // TODO: Open db
+        dataSource.open();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        // TODO: Close db
+        dataSource.close();
     }
 
     protected void loadForecastData() {

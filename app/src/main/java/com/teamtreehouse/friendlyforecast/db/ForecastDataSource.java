@@ -21,7 +21,9 @@ public class ForecastDataSource {
     }
 
     // close a database
-
+    public void close() {
+        database.close();
+    }
     // insert
 
     // select
