@@ -17,7 +17,7 @@ public class ForecastHelper extends SQLiteOpenHelper {
                     COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COLUMN_TEMPERATURE + " REAL)";
 
-    public ForecastHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    public ForecastHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 
