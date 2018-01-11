@@ -52,7 +52,6 @@ public class ViewForecastActivity extends ListActivity {
     protected void updateList(Cursor cursor) {
         mTemperatures.clear();
 
-        // TODO: Loop through cursor to populate mTemperatures
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             // do stuff
@@ -71,8 +70,8 @@ public class ViewForecastActivity extends ListActivity {
     }
 
     protected void filterTemperatures(String minTemp) {
-        // TODO: Select greater than
-        //updateList(cursor);
+        Cursor cursor = dataSource.selectTempsGreaterThan(minTemp);
+        updateList(cursor);
     }
 
     protected void configureActionBar() {

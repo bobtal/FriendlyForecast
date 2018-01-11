@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.teamtreehouse.friendlyforecast.services.Forecast;
 
+import java.security.cert.CRLSelector;
+
 public class ForecastDataSource {
 
     private SQLiteDatabase database;
@@ -52,7 +54,23 @@ public class ForecastDataSource {
                 ForecastHelper.TABLE_TEMPERATURES, //table
                 new String[] { ForecastHelper.COLUMN_TEMPERATURE }, //column name(s)
                 null, // where clause
-                null, // where parameters
+                null, // where parameter(s)
+                null, // group by
+                null, //having
+                null // order by
+        );
+
+        return cursor;
+    }
+
+    public Cursor selectTempsGreaterThan(String minTemp) {
+        String whereClause = ForecastHelper.COLUMN_TEMPERATURE + " > ?";
+
+        Cursor cursor = database.query(
+                ForecastHelper.TABLE_TEMPERATURES, //table
+                new String[] { ForecastHelper.COLUMN_TEMPERATURE }, //column name(s)
+                whereClause, // where clause
+                new String[] { minTemp }, // where parameter(s)
                 null, // group by
                 null, //having
                 null // order by
