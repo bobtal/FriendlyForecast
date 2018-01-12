@@ -19,6 +19,8 @@ public class ForecastHelper extends SQLiteOpenHelper {
                     COLUMN_TEMPERATURE + " REAL, " +
                     COLUMN_TIME + " INTEGER)";
 
+    // migrations
+    // from 1 to 2
     private static final String DB_ALTER =
             "ALTER TABLE " + TABLE_TEMPERATURES + " ADD " + COLUMN_TIME + " INTEGER";
 
@@ -33,6 +35,10 @@ public class ForecastHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(DB_ALTER);
+        switch (oldVersion) {
+            case 1:
+                // upgrade from version 1 to version 2
+                db.execSQL(DB_ALTER);
+        }
     }
 }
