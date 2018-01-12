@@ -80,6 +80,18 @@ public class ForecastDataSource {
     }
 
     // update
+    public int updateTemperature(double newTemp) {
+        ContentValues values = new ContentValues();
+        values.put(ForecastHelper.COLUMN_TEMPERATURE, newTemp);
+        int rowsUpdated = database.update(
+                ForecastHelper.TABLE_TEMPERATURES, // table
+                values, // values
+                null, // where clause
+                null //where parameter(s)
+        );
+
+        return rowsUpdated;
+    }
 
     // delete
 }
