@@ -78,7 +78,7 @@ public class MainActivity extends Activity {
         mDeleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Delete
+                dataSource.deleteAll();
             }
         });
 

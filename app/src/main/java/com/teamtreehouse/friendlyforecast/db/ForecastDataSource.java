@@ -94,4 +94,11 @@ public class ForecastDataSource {
     }
 
     // delete
+    public void deleteAll() {
+        database.delete(
+                ForecastHelper.TABLE_TEMPERATURES, // table
+                null, // where clause
+                null // where parameter(s)
+        );
+    }
 }
